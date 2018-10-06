@@ -4,7 +4,7 @@ Feature: Sort
   I want to sort the results
   So that i can see product of may choice
 
-  @regression @smoke
+  @regression
   Scenario: Sort By price
     Given I am on home page
     When I search for a product "nike"
