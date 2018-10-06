@@ -22,6 +22,7 @@ public class DriverHelper {
     protected static WebDriver driver;
 
     private String browser = System.getProperty("brows");
+    private String remoteURL = System.getProperty("remoteURL");
 
 
     public DriverHelper() {
@@ -32,10 +33,9 @@ public class DriverHelper {
         switch (browser) {
             case "chrome":
                 ChromeDriverManager.getInstance().setup();
-                DesiredCapabilities capabilities=new DesiredCapabilities();
+                DesiredCapabilities capabilities = new DesiredCapabilities();
                 capabilities.setBrowserName("chrome");
-                capabilities.setVersion("|");
-                driver = new RemoteWebDriver(new URL("http://192.168.43.177:4444/wd/hub"),capabilities);
+                driver = new RemoteWebDriver(new URL(remoteURL), capabilities);
                 break;
             case "ie":
                 InternetExplorerDriverManager.getInstance().setup();
@@ -51,7 +51,6 @@ public class DriverHelper {
                 break;
         }
     }
-
 
 
     public void closeBrowser() {
